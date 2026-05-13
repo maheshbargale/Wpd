@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>
+            <h1>
+                Student Registration Form
+            </h1>
+        </legend>
+            Enter You Name 
+            <input type="text" name="name" id="name">
+            <br>
+            <br>
+            Enter Your Class
+            <input type="text" name="class" id="class">
+            <br>
+            <br>
+            Enter Your Roll No
+            <input type="text" name="rollno" id="rollno">
+             <br>
+             <br>
+             Enter Your Mobile No
+             <input type="text" name="mobile" id="mobile">
+             <br>
+             <br>
+             Enter Your Email
+             <input type="email" name="email" id="email">
+        </fieldset>
+        <button type="submit" onclick="UpdateContent()" align="center">Submit</button>
+        <h3 id="personalHeading"></h3>
+        <p id="nameoutput"></p>
+        <p id="classoutput"></p>
+        <p id="rollnooutput"></p>       
+        <p id="mobileoutput"></p>
+        <p id="emailoutput"></p>
+        <script>
+            function UpdateContent(){
+                let name = document.getElementById("name").value;
+                let className = document.getElementById("class").value;     
+                let rollno = document.getElementById("rollno").value;
+                let mobile = document.getElementById("mobile").value;
+                let email = document.getElementById("email").value;
+                document.getElementById("personalHeading").innerHTML = "Personal Details";
+                document.getElementById("nameoutput").innerHTML = "Name: " + name
+                document.getElementById("classoutput").innerHTML = "Class: " + className
+                document.getElementById("rollnooutput").innerHTML = "Roll No: " + rollno
+                document.getElementById("mobileoutput").innerHTML = "Mobile No: " + mobile
+                document.getElementById("emailoutput").innerHTML = "Email: " + email
+            }
+        </script>
+</body>
+</html>

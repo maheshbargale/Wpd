@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator{
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .display{
+            width: 95%;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            padding: 5px;
+            font-size: 18px;
+        }
+        .button{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="display">
+        <div class="button">
+            <button onclick="addNumber('1')">1</button>
+            <button onclick="addNumber('2')">2</button>
+            <button onclick="addNumber('3')">3</button>
+            <button onclick="setOperator('+')">+</button>
+            <button onclick="addNumber('4')">4</button>
+            <button onclick="addNumber('5')">5</button>
+            <button onclick="addNumber('6')">6</button>
+            <button onclick="setOperator('-')">-</button>
+            <button onclick="addNumber('7')">7</button>
+            <button onclick="addNumber('8')">8</button>
+            <button onclick="addNumber('9')">9</button>
+            <button onclick="setOperator('*')">*</button>
+            <button onclick="addNumber('0')">0</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="setOperator('/')">/ </button>
+        </div>
+    </div>
+    <script>
+        let num1 = '';
+        let num2 = '';
+        let operator = '';
+        function addNumber(num)
+        {
+            document.getElementById('display').value += num;
+        }
+        function setOperator(op)
+        {
+            operator = op;
+            num1 = document.getElementById('display').value;
+            document.getElementById('display').value = '';
+        }
+        function calculateResult()
+        {
+            num2= document.getElementById('display').value;
+            if(num1=="" && num2=="")
+            {
+                document.getElementById('display').value = "Please enter numbers";
+                return;
+            }
+            else if(num1=="")
+            {
+                document.getElementById('display').value = "Please enter first number";
+                return;
+            }
+            else if(num2=="")
+            {
+                document.getElementById('display').value = "Please enter second number";
+                return;
+            }
+            let result;
+            switch(operator)
+            {
+                case"+":
+                result = Number(num1) + Number(num2);
+                break;
+                case"-":
+                result = Number(num1) - Number(num2);
+                break;
+                case"*":
+                result = Number(num1) * Number(num2);
+                break;
+                case"/":
+                result = Number(num1) / Number(num2);
+                break;
+                default:
+                result = "Invalid operator";
+                break;
+            }
+            document.getElementById('display').value = result;
+        }
+        function clearDisplay()
+        {
+            num1 = '';
+            num2 = '';
+            operator = '';
+            document.getElementById('display').value = '';
+        }
+    </script>
+</body>
+</html>

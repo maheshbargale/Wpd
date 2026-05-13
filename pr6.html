@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+</head>
+<body>
+<form onsubmit="return validateForm()">
+<label>Name:</label>
+<input type="text" id="name"><br><br>
+<label>Email:</label>
+<input type="text" id="email"><br><br>
+<label>Password:</label>
+<input type="password" id="password"><br><br>
+<input type="submit" value="Submit">
+</form>
+<script>
+function validateForm() {
+// Get input values
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let password = document.getElementById("password").value.trim();
+if (name === "" || email === "" || password === "") {
+alert("All fields are required.");
+return false;
+}
+let emailPattern = /^\S+@\S+\.\S+$/;
+if (!emailPattern.test(email)) {
+alert("Please enter a valid email address.");
+return false;
+}
+if (password.length < 6) {
+alert("Password must be at least 6 characters long.");
+return false;
+}
+alert("Form submitted successfully!");
+return true;
+}
+</script>
+</body>
+</html>
